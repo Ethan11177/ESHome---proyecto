@@ -1,0 +1,36 @@
+body{
+    font-family: 'Nunito', sans-serif;
+}
+
+.centro .formulario{
+    width: 95vw;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.centro{
+    height: 75vh;
+    background: linear-gradient(to right, #fafaf0, #eaeded);
+}
+
+input{
+    width: 20vw;
+}
+
+h3{
+    text-align: center;
+}
+
+form{
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+fieldset{
+    width: 100%;
+}
+
+.centro .formulario .submit{
+    margin-left: 10vw;
+    margin-top: 1vh;
+}

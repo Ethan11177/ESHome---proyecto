@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>ESHome</title>
+    <link rel='stylesheet' href='..\CSS\index.css'>
+    <script src='./../JS/jquery_3.6.js'></script>
+</head>
+<body>
+<div id='tarjetas' style="display: flex; flex-flow: wrap;">
+<br>
+</div>
+</body>
+<script>
+    $(document).ready(()=>{
+        console.log('ola')
+        var div = document.getElementById('tarjetas');
+    for (let index = 0; index < 8; index++) {
+    var hijo= document.createElement('div')
+    if (index%2==0) {
+        hijo.style.backgroundColor = 'red'
+    }else{
+        hijo.style.backgroundColor = 'green'
+    }
+    hijo.innerHTML= "<div class='departamento' style='margin: 0 100px;'> <div class='imagen'><a href='departamento.html'><img src='../Imagenes/muestra.jpg' alt='></a></div><div class='informacion'><div class='ubicacion'>Calle lomas</div><div class='precio'>0.00</div></div></div>"
+    div.appendChild(hijo)
+    }
+    })
+    
+</script>
+</html>

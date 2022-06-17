@@ -1,0 +1,51 @@
+/*Inicio de sesion y de registro*/
+body{
+    font-family: 'Nunito', sans-serif;
+}
+
+.centro .registro{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #fafaf0, #eaeded);
+    height: 100%;
+    border-radius: 8px;
+    padding: 1%;
+}
+
+fieldset{
+    border: 0;
+    width: 44%;
+}
+
+.centro .i{
+    float: left;
+}
+
+.centro .inicio{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, #fafaf0, #eaeded);
+    height: 100%;
+    border-radius: 8px;
+}
+
+input{
+    border-radius: 8px;
+    width: 10vw;
+}
+
+.centro .registro .submit{
+    margin-left: .5vw;
+}
+
+.centro .registro .genero{
+    margin-left: 2.5vw;
+}

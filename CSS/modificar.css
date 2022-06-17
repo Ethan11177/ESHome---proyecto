@@ -1,0 +1,17 @@
+.centro{
+    height: 80vh;
+}
+
+.modificar{
+    border-radius: 10px;
+    padding-left: 40vw;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, #fafaf0, #eaeded);
+}
+
+input{
+    border-radius: 10px;
+    width: 15vw;
+}

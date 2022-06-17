@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESHome</title>
+    <link rel="stylesheet" href="..\CSS\index.css">
+    <link rel="stylesheet" href="..\CSS\formularios.css">
+    <link rel="stylesheet" href="./../VALIDACION/validetta-1.0.1/src/validetta.css" type="text/css" media="screen">
+    <script src="./../JS/jquery_3.6.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="./../VALIDACION/validetta-1.0.1/src/validetta.js"></script>
+    <script type="text/javascript" src="./../VALIDACION/validetta-1.0.1/localization/validettaLang-es-ES.js"></script>
+    <script>
+        $(document).ready(()=>{
+
+            $("#registroA").validetta();
+
+
+            $("form#registroA").submit((e)=>{
+                
+                e.preventDefault();
+
+                $.ajax({
+                    method:"POST",
+                    url:"./../Back-end/registro.php",
+                    data:$("form#registroA").serialize(),
+                    cache: false,
+                    success:(respAX)=>{
+
+                        let AX = JSON.parse(respAX);
+                        let fecha = new Date();
+
+                        if(AX.cod == 1) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'ESHOME - ' + fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear(),
+                                text: AX.msj,
+                                confirmButtonText: 'OK',
+                                didDestroy:()=>{
+                                    window.location.href = AX.url
+                                }
+                            })
+                        }
+                        else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'ESHOME - ' + fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear(),
+                                text: AX.msj,
+                                confirmButtonText: 'OK'
+                            })
+                        }
+                    }
+                });
+            });
+
+            ////INICIO DE SESION EN EL SERVIDOR
+
+            $("form#inicioA").submit((e)=>{
+                
+                e.preventDefault();
+
+                $.ajax({
+                    method:"POST",
+                    url:"./../Back-end/inicio_sesion.php",
+                    data:$("form#inicioA").serialize(),
+                    cache: false,
+                    success:(respAX)=>{
+
+                        let AX = JSON.parse(respAX);
+                        let fecha = new Date();
+
+                        if(AX.cod == 1) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'ESHOME - ' + fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear(),
+                                text: AX.msj,
+                                confirmButtonText: 'OK',
+                                didDestroy:()=>{
+                                    window.location.href = AX.url
+                                }
+                            })
+                        }
+                        else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'ESHOME - ' + fecha.getDate() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getFullYear(),
+                                text: AX.msj,
+                                confirmButtonText: 'OK',
+                                didDestroy:()=>{
+                                    window.location.href = AX.url
+                                }
+                            })
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+    <a href="index.html" class="logo">
+        <img src="..\Imagenes\Logo.jpeg" alt="Logo">
+        <h2>ESHome</h2>
+    </a>
+    </header>
+    <div class="centro">
+        <div class="registro">
+            <h3>Regístrate</h3>
+            <form action="#" method="POST" name="RegistroAlumnos" id="registroA">
+                <fieldset class="i">
+                    <legend>Datos personales</legend>
+                    <input value="" type="text" name="nombre" placeholder="Nombre(s)" maxlength="30" id="nombre" data-validetta="required,maxLength[30]"><br><br>
+                    <input value="" type="text" name="apellido_pa" placeholder="Apellido paterno" maxlength="30" id="apellido_pa" data-validetta="required,maxLength[30]"><br><br>
+                    <input value="" type="text" name="apellido_ma" placeholder="Apellido materno" maxlength="30" id="apellido_ma" data-validetta="required,maxLength[30]"><br><br>                    
+                    <input value="" type="text" name="curp" placeholder="CURP" maxlength="18" id="curp"  data-validetta="required,maxLength[19],minLength[18]" style="text-transform:uppercase"><br><br>
+                    <input value="" type="password" name="contrasena" placeholder="Contraseña" maxlength="10" id="contrasena" data-validetta="required,maxLength[20]"><br><br>
+                    <label for="fecha-nacimiento">Fecha de nacimiento</label><br><br>
+                    <input value="" type="date" name="nacimiento" id="nacimiento" data-validetta="required"><br><br>
+                    Género<br>
+                    <select name="genero" id="genero" data-validetta="required">
+                        <option value="">-</option>
+                        <option value="F">Femenino</option>
+                        <option value="M">Masculino</option>
+                        <option value="X">Sin género</option>
+                    </select>
+                </fieldset>
+                <fieldset class="d">
+                    <legend>Contacto</legend>
+                    <input value="" type="tel" name="tel" placeholder="Teléfono" maxlength="10" id="tel" data-validetta="required,maxLength[10],minLength[10]"><br><br>
+                    <input value="" type="email" name="correo" placeholder="example@example.com" maxlength="30" id="correo" data-validetta="required,maxLength[60],email"><br><br>
+                </fieldset>
+                <input type="submit" value="Registrarme">
+            </form>
+        </div>
+        <div class="inicio">
+            <h3>Iniciar sesión</h3>
+            <form action="#" method="POST" name="RegistroAlumnos" id="inicioA">
+                <input type="email" name="correo" placeholder="example@example.com" id="correo"><br><br>
+                <input type="password" name="contrasena" placeholder="Contraseña" id="contrasena"><br><br>
+                <input type="submit" value="Iniciar Sesion">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="i">Todos los derechos reservados Equipo 6 2022</div>
+        </div>
+    </footer>
+</body>
+</html>

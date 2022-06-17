@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESHome</title>
+    <link rel="stylesheet" href="..\CSS\index.css">
+    <link rel="stylesheet" href="..\CSS\departamento.css">
+    <script src="./../JS/jquery_3.6.js"></script>
+    <script>
+        var remplaza = /\+/gi;
+        var url = window.location.href;
+        
+        url = unescape(url);
+        url = url.replace(remplaza, " ");
+        url = url.toUpperCase();
+        
+        function obtener_valor(variable)
+        {
+            var variable_may = variable.toUpperCase();
+            var variable_pos = url.indexOf(variable_may);
+        
+            if (variable_pos != -1)
+            {
+                var pos_separador = url.indexOf("&", variable_pos);
+                if (pos_separador != -1)
+                {
+                    return url.substring(variable_pos + variable_may.length + 1, pos_separador);
+                } else {
+                    return url.substring(variable_pos + variable_may.length + 1, url.length);
+                }
+            } else {
+                return "NO_ENCONTRADO";
+            }
+        }
+
+        var valor = obtener_valor("info");
+
+        $(document).ready(()=>{
+
+            let info = {
+                thisvalor : obtener_valor("info")
+            }
+
+            $.ajax({
+                method:"POST",
+                url:"./../Back-end/obetener_datos_departamento.php",
+                data: info,
+                cache: false,
+                success:(respAX)=>{
+
+                    let AX = JSON.parse(respAX)
+                    console.log(AX)
+                    
+                    var div = document.getElementById("ubicacion")
+                    var hijo = document.createElement("div")
+                    hijo.innerHTML = "<h2>Ubicación</h2><b>Calle: </b>" + AX.db[2] + ", <b>Número Interior: </b>" + AX.db[3] + ", <b>Número Exterior: </b>" + AX.db[4] + ", <b>Colonia: </b>" + AX.db[5] + ", <b>Delegación: </b>" + AX.db[7]
+        
+                    div.appendChild(hijo)
+
+                    if (AX.db[8] == 1) {
+                        var div2 = document.getElementById("descripcion")
+                        var hijo2 = document.createElement("div")
+                        hijo2.innerHTML = "<h2>Descripción</h2><br>" + AX.db[6] + "<br><h2>Precio de Renta</h2><br>Renta con Servicios: $" + AX.db[10] + "<br><h2>Disponibilidad</h2><br>El departamento se encuentra Disponible<br><h2>Datos Contacto</h2><br><b>Correo: </b>" + AX.db2[6] + "<br><b>Teléfono: </b>" + AX.db2[8]
+
+                        div2.appendChild(hijo2)
+                    }
+                    else {
+                        var div2 = document.getElementById("descripcion")
+                        var hijo2 = document.createElement("div")
+                        hijo2.innerHTML = "<h2>Descripción</h2><br>" + AX.db[6] + "<br><h2>Precio de Renta</h2><br>Renta con Servicios: " + AX.db[10] + "<br><h2>Disponibilidad</h2><br>El departamento no se encuentra Disponible<br><h2>Datos Contacto</h2><br><b>Correo: </b>" + AX.db2[6] + "<br><b>Teléfono: </b>" + AX.db2[8]
+
+                        div2.appendChild(hijo2)
+                    }
+
+                    var img = document.getElementById("imagenes")
+                    var hijo3 = document.createElement("ul")
+                    hijo3.innerHTML = "<li id='slide1'><img src='./../Back-end/Uploads/"+AX.db[0]+"-"+AX.db[9]+".jpg' alt=''></li>"
+
+                    img.appendChild(hijo3)
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <header>
+    <a href="landing_session.html" class="logo">
+        <img src="..\Imagenes\Logo.jpeg" alt="Logo">
+        <h2>ESHome</h2>
+    </a>
+    <nav>
+        <a href="./Arrendatario/solicitud.php">Solicitar Departamento</a>
+        <a href="./../Back-end/index_sesion_iniciada.php" class="nav-link">Regresar</a>
+        <a href="./../Back-end/cerrar_sesion.php">Cerrar Sesión</a>
+    </nav>
+    </header>
+    <div class="centro">
+        <div class="i">
+            <div class="carrusel">
+                <ul class="slider" id="imagenes">
+                    
+                </ul>
+            </div>
+            <div class="ubicacion" id="ubicacion">
+            </div>
+        </div>
+        <div class="d" id="descripcion">
+        </div>
+        <form action="#" method="POST" name="RegistroAlumnos" id="registroA">
+            <input type="text" disabled placeholder="1" name="1" id="1w7">
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="i">Todos los derechos reservados Equipo 6 2022</div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+body{
+    font-family: 'Nunito', sans-serif;
+}
+
+.centro{
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #fafaf0, #eaeded);
+}
+
+.centro .solicitudes .respuestas{
+    color: #2d4e54;
+}
+
+.centro .solicitudes .respuestas:hover{
+    color:  #1abc9c ;
+}
+
+.centro .tabla{
+    width: 95.7vw;
+}
+
+/*Tabla*/
+
+table{
+    display:absolute;
+    border-radius: 5px;
+    width: 100%;
+    padding-left: 0vw;
+}
+
+tr,td{
+    border:2px solid  #d5d8dc ;
+    border-radius: 10px;
+    margin: 10vh;
+    min-width: 25%;
+    max-width: 25%;
+    height: 10;
+    padding-left: 6%;
+}

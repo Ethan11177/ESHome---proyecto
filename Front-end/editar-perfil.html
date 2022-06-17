@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESHome</title>
+    <link rel="stylesheet" href="..\CSS\index.css">
+    <link rel="stylesheet" href="..\CSS\modificar.css">
+    <link rel="stylesheet" href="./../VALIDACION/validetta-1.0.1/src/validetta.css" type="text/css" media="screen">
+</head>
+<body>
+    <header>
+    <a href="index.html" class="logo">
+        <img src="..\Imagenes\Logo.jpeg" alt="Logo">
+        <h2>ESHome</h2>
+    </a>
+    </header>
+    <div class="centro">
+        <div class="modificar">
+            <form method="POST">
+                <br>
+                <h3>¡Modifica tus datos!</h3>
+                <label for="Nombre(s)">Nombres(s)</label><br>
+                <input type="text" name="Nombre(s)"><br><br>
+                <label for="Apellido-p">Apellido paterno</label><br>
+                <input type="text" name="Apellido-p"><br><br>
+                <label for="Apellido-m">Apellido materno</label><br>
+                <input type="text" name="Apellido.m"><br><br>
+                <label for="CURP">CURP</label><br>
+                <input type="text" name="CURP" readonly><br><br>
+                <label for="Feha de nacimiento">Fecha de nacimiento</label><br>
+                <input type="text" name="Fecha de nacimiento"><br><br>
+                <label for="Genero">Género</label><br>
+                <select name="genero" id="genero" data-validetta="required">
+                    <option value="">-</option>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                    <option value="X">Sin género</option>
+                </select><br><br>
+                <label for="Telefono">Número telefónico</label><br>
+                <input type="text" name="Teléfono"><br><br>
+                <label for="Correo">Correo electrónico</label><br>
+                <input type="email" name="Correo"><br><br>
+                <input type="submit" value="Modificar">
+                <br><br><br>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="i">Todos los derechos reservados Equipo 6 2022</div>
+        </div>
+    </footer>
+</body>
+</html>

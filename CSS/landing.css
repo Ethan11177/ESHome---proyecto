@@ -1,0 +1,50 @@
+body{
+    font-family: 'Nunito', sans-serif;
+}
+
+.centro .logo{
+    height: 80vh;
+}
+
+.centro .logo img{
+    height: 90%;
+    padding-left: 3vw;
+}
+
+.centro .presentacion{
+    height: 80vh;
+    background: linear-gradient(to right, #fafaf0, #eaeded);
+    border-radius: 10px;
+    text-align: center;
+    display: inline;
+    padding-top: 40px;
+}
+
+.centro .presentacion p{
+    top: 30%;
+    font-size: x-large;
+    display: inline;
+    padding-top: 202px;
+}
+
+.centro .presentacion .index{
+    color: #542d2d;
+    text-decoration: underline;
+}
+
+.index{
+    color: #542d2d;
+    text-decoration: underline;
+}
+
+.centro .presentacion .index:hover{
+    color:  #1abc9c ;
+    font-size: xx-large;
+    transition: font-size .5s;
+}
+
+.index:hover{
+    color:  #1abc9c ;
+    font-size: xx-large;
+    transition: font-size .5s;
+}
